@@ -13,8 +13,7 @@ object AgentDataReader {
     val reader = CSVReader.open(new File(path))
     val agents = reader.all.tail.map { line =>
       val agentIdentifier = Seq(line(2), line(3), line(4)).mkString("_")
-      val maybeLatitude = Try(line(5).toDouble)
-      val maybeLongitude = Try(line(6).toDouble)
+      val Seq(maybeLatitude, maybeLongitude) = Seq(5, 6).map(n => Try(line(n).toDouble))
       for {
         lat <- maybeLatitude
         lng <- maybeLongitude
