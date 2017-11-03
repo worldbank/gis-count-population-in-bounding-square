@@ -19,4 +19,4 @@ case class GPSCoordinates(lat: Lat, lng: Lng) extends Ordered[GPSCoordinates] {
   }
 }
 
-case class CatchmentArea(squareEdgeLengthMeters: Double, numberWithinArea: Double)
+case class CatchmentArea(squareEdgeLengthMeters: Double, numberWithinArea: Long)
