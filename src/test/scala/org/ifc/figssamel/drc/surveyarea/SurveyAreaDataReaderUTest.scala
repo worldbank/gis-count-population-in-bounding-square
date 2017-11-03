@@ -14,7 +14,7 @@ class SurveyAreaDataReaderUTest extends FlatSpecLike with Matchers {
      Success(SurveyArea("Mont ngafula_Triangle Cité verte_4", GPSCoordinates(Lat(-4.44205), Lng(15.25853)))),
     )
     
-    val actual = SurveyAreaDataReader.read("src/test/resources/survey-area_test_data.csv")
+    val actual = SurveyAreaDataReader read "src/test/resources/survey-area_test_data.csv"
     
     actual should contain theSameElementsInOrderAs expected
   }
