@@ -12,9 +12,10 @@ class AgentDataReaderUTest extends FlatSpecLike with Matchers {
       Success(Agent("g1ombe_BM TRAVEL_FIN0435", GPSCoordinates(Lat(-4.3068878), Lng(15.3076398)))),
       Success(Agent("go2mbe_OLKA BROTHERS_FIN", GPSCoordinates(Lat(-4.308453333), Lng(15.30785833))))
     )
-    val actual = AgentDataReader read "src/test/resources/agent_test_data.csv"
+    val actual = AgentDataReader readMaybe "src/test/resources/agent_test_data.csv"
     
     actual should contain theSameElementsInOrderAs expected
+    AgentDataReader read "src/test/resources/agent_test_data.csv" should contain theSameElementsInOrderAs expected.flatMap(_.toOption)
   }
   
 }

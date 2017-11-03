@@ -3,13 +3,14 @@ package org.ifc.figssamel.drc.agent
 import java.io.File
 
 import com.github.tototoshi.csv._
+import org.ifc.figssamel.drc.DataReader
 import org.ifc.figssamel.drc.location.{GPSCoordinates, Lat, Lng}
 
 import scala.util.Try
 
-object AgentDataReader {
+object AgentDataReader extends DataReader[Agent] {
   
-  def read(path: String): Seq[Try[Agent]] = {
+  def readMaybe(path: String): Seq[Try[Agent]] = {
     val reader = CSVReader.open(new File(path))
     val agents = reader.all.tail.map { line =>
       val agentIdentifier = Seq(line(2), line(3), line(4)).mkString("_")
