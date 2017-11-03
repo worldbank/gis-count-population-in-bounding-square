@@ -11,7 +11,7 @@ class Cartographer(agents: Seq[Agent], surveyAreas: Seq[SurveyArea]) {
     surveyAreas.foldLeft(Seq[SurveyAreaCharacteristics]()) { case (accSurveyAreasCharacteristics, surveyArea) =>
       val catchmentAreas = edgeSizesKm.map { edgeSizeKm =>
         val boundingBox = BoundingBox.from(surveyArea.center, edgeSizeKm)
-        val nAgentsInCatchementArea = agents.count(agent => boundingBox.contains(agent.gPSCoordinates))
+        val nAgentsInCatchementArea = agents.count(agent => boundingBox contains agent.gPSCoordinates)
         CatchmentArea(edgeSizeKm, nAgentsInCatchementArea)
       }
       accSurveyAreasCharacteristics :+ SurveyAreaCharacteristics(surveyArea, catchmentAreas)
