@@ -5,6 +5,28 @@ case class BoundingBox(
     gPSCoordinates2: GPSCoordinates,
     gPSCoordinates3: GPSCoordinates,
     gPSCoordinates4: GPSCoordinates)
+  extends Ordered[BoundingBox]{
+  
+  override def compare(that: BoundingBox): Int =
+    (gPSCoordinates1, gPSCoordinates2, gPSCoordinates3, gPSCoordinates4)
+      .compare(that.gPSCoordinates1, that.gPSCoordinates2, that.gPSCoordinates3, that.gPSCoordinates4)
+  
+  def contains(candidate: GPSCoordinates): Boolean = {
+    val gPSCoordinates = Seq(gPSCoordinates1, gPSCoordinates2, gPSCoordinates3, gPSCoordinates4).sorted
+    
+    val bottomLeft = gPSCoordinates.head
+    val topRight = gPSCoordinates.reverse.head
+    
+    val isLongitudeIsInRange = if (topRight.lng < bottomLeft.lng) {
+      candidate.lng >= bottomLeft.lng || candidate.lng <= topRight.lng
+    } else {
+      candidate.lng >= bottomLeft.lng && candidate.lng <= topRight.lng
+    }
+    
+    candidate.lat >= bottomLeft.lat && candidate.lat <= topRight.lat && isLongitudeIsInRange
+  }
+  
+}
 
 object DegreeRadianConverter {
   
@@ -29,6 +51,7 @@ object BoundingBox {
   
   import DegreeRadianConverter.Constants._
   
+  // Adapted from https://stackoverflow.com/questions/238260/how-to-calculate-the-bounding-box-for-a-given-lat-lng-location
   def from(center: GPSCoordinates, edgeLengthKm: Double): BoundingBox = {
     val radDist = (edgeLengthKm / 2) / R
    
