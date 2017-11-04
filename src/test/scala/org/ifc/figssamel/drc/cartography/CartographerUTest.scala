@@ -100,12 +100,11 @@ class CartographerUTest extends FlatSpecLike with Matchers {
   }
   
   "The cartographer" should "calculate the number of agents in each catchment area of the given size" in new Fixture {
-    val cartographer = new Cartographer(agents, surveyAreas)
     val expected = Seq(
       SurveyAreaCharacteristics(surveyArea1, Seq(CatchmentArea(0.25, 0), CatchmentArea(0.5, 4))),
       SurveyAreaCharacteristics(surveyArea2, Seq(CatchmentArea(0.25, 0), CatchmentArea(0.5, 10))),
     )
-    val actual = cartographer.calculateCatchmentAreaPopulations(Seq(0.25, 0.5))
+    val actual = Cartographer.calculateCatchmentAreaPopulations(agents, surveyAreas, Seq(0.25, 0.5))
     
     actual should contain theSameElementsInOrderAs expected
   }

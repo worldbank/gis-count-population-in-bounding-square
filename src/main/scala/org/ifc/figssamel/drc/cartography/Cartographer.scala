@@ -4,9 +4,10 @@ import org.ifc.figssamel.drc.agent.Agent
 import org.ifc.figssamel.drc.location.{BoundingBox, CatchmentArea}
 import org.ifc.figssamel.drc.surveyarea.{SurveyArea, SurveyAreaCharacteristics}
 
-class Cartographer(agents: Seq[Agent], surveyAreas: Seq[SurveyArea]) {
-
-  def calculateCatchmentAreaPopulations(edgeSizesKm: Seq[Double]): Seq[SurveyAreaCharacteristics] = {
+object Cartographer {
+  
+  def calculateCatchmentAreaPopulations(agents: Seq[Agent], surveyAreas: Seq[SurveyArea], edgeSizesKm: Seq[Double]):
+  Seq[SurveyAreaCharacteristics] = {
     
     surveyAreas.foldLeft(Seq[SurveyAreaCharacteristics]()) { case (accSurveyAreasCharacteristics, surveyArea) =>
       val catchmentAreas = edgeSizesKm.map { edgeSizeKm =>
@@ -18,5 +19,5 @@ class Cartographer(agents: Seq[Agent], surveyAreas: Seq[SurveyArea]) {
     }
     
   }
-
+  
 }

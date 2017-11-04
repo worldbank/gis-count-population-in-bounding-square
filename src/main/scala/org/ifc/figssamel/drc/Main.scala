@@ -16,9 +16,8 @@ object Main extends App {
   
   val cSVWRiter = CSVWriter open pathForSavingData
   val rowWriter = cSVWRiter.writeRow _
-
-  val cartographer = new Cartographer(agents, surveyAreas)
-  val surveyAreaCharacteristics = cartographer calculateCatchmentAreaPopulations Seq(0.25, 0.5)
+  
+  val surveyAreaCharacteristics = Cartographer.calculateCatchmentAreaPopulations(agents, surveyAreas, Seq(0.25, 0.5))
   
   val dataWriter = new SurveyAreaCharacteristicsWriter(rowWriter)
   dataWriter write surveyAreaCharacteristics
