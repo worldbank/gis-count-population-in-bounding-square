@@ -18,6 +18,7 @@ class SurveyAreaCharacteristicsWriterUTest extends FlatSpecLike with Matchers {
     }
     SurveyAreaCharacteristicsWriter write surveyAreasCharacteristics using rowWriter
     val expected = Seq(
+      Seq("area_name", "Any_within_0.25km", "number_within_0.25km", "Any_within_0.5km", "number_within_0.5km"),
       Seq("barumbu_Deriere marche", "N", "0", "Y", "4"),
       Seq("barumbu_Kabinda/Flambeau", "N", "0", "Y", "10")
     )

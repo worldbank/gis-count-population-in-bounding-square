@@ -3,6 +3,13 @@ package org.ifc.figssamel.drc.surveyarea
 class SurveyAreaCharacteristicsWriter(surveyAreasCharacteristics: Seq[SurveyAreaCharacteristics] = Seq()) {
 
   def using(rowWriter: Seq[String] => Unit): Unit = {
+    val catchmentAreas = surveyAreasCharacteristics.headOption.map(_.catchementAreas).toSeq.flatten
+    val header = "area_name" +: catchmentAreas.flatMap { catchmentArea =>
+      val edgeLengthKm = catchmentArea.squareEdgeLengthKm
+      Seq(s"Any_within_${edgeLengthKm}km", s"number_within_${edgeLengthKm}km")
+    }
+    if (surveyAreasCharacteristics.nonEmpty) { rowWriter(header) }
+    
     surveyAreasCharacteristics.foreach { surveyAreaCharacteristics =>
       val characteristics =
         surveyAreaCharacteristics.catchementAreas.foldLeft(Seq[String]())
