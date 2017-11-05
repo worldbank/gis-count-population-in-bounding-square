@@ -14,7 +14,7 @@ object Main extends App {
   
   val surveyAreas = SurveyAreaDataReader read surveyAreasPath
   val agents = AgentDataReader read agentsPath
-  val boxEdgeLengths = boxEdgeLengthsUnparsed.split(",").map(_.toDouble).toSeq
+  val boxEdgeLengths = boxEdgeLengthsUnparsed.split(",").map(_.trim.toDouble).toSeq
   
   val cSVWRiter = CSVWriter open pathForSavingData
   val rowWriter = cSVWRiter.writeRow _
