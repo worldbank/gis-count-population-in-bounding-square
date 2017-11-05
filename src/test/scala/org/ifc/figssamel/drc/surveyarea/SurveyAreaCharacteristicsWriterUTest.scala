@@ -16,8 +16,7 @@ class SurveyAreaCharacteristicsWriterUTest extends FlatSpecLike with Matchers {
     val rowWriter = (line: Seq[String]) => {
       accumulatedRows = accumulatedRows :+ line
     }
-    val writer = new SurveyAreaCharacteristicsWriter(rowWriter)
-    writer write surveyAreasCharacteristics
+    SurveyAreaCharacteristicsWriter write surveyAreasCharacteristics using rowWriter
     val expected = Seq(
       Seq("barumbu_Deriere marche", "N", "0", "Y", "4"),
       Seq("barumbu_Kabinda/Flambeau", "N", "0", "Y", "10")

@@ -10,6 +10,7 @@ object Main extends App {
   val surveyAreasPath = args(0)
   val agentsPath = args(1)
   val pathForSavingData = args(2)
+  val boxEdgeLengthsUnparsed = args(3)
   
   val surveyAreas = SurveyAreaDataReader read surveyAreasPath
   val agents = AgentDataReader read agentsPath
@@ -19,8 +20,7 @@ object Main extends App {
   
   val surveyAreaCharacteristics = Cartographer.calculateCatchmentAreaPopulations(agents, surveyAreas, Seq(0.25, 0.5))
   
-  val dataWriter = new SurveyAreaCharacteristicsWriter(rowWriter)
-  dataWriter write surveyAreaCharacteristics
+  SurveyAreaCharacteristicsWriter write surveyAreaCharacteristics using rowWriter
   
   cSVWRiter.close()
 }

@@ -1,8 +1,8 @@
 package org.ifc.figssamel.drc.surveyarea
 
-class SurveyAreaCharacteristicsWriter(rowWriter: Seq[String] => Unit) {
+class SurveyAreaCharacteristicsWriter(surveyAreasCharacteristics: Seq[SurveyAreaCharacteristics] = Seq()) {
 
-  def write(surveyAreasCharacteristics: Seq[SurveyAreaCharacteristics]): Unit = {
+  def using(rowWriter: Seq[String] => Unit): Unit = {
     surveyAreasCharacteristics.foreach { surveyAreaCharacteristics =>
       val characteristics =
         surveyAreaCharacteristics.catchementAreas.foldLeft(Seq[String]())
@@ -13,5 +13,17 @@ class SurveyAreaCharacteristicsWriter(rowWriter: Seq[String] => Unit) {
       rowWriter(Seq(surveyAreaCharacteristics.surveyArea.name) ++ characteristics)
     }
   }
+  
+  def write(surveyAreasCharacteristics: Seq[SurveyAreaCharacteristics]): SurveyAreaCharacteristicsWriter =
+    new SurveyAreaCharacteristicsWriter(surveyAreasCharacteristics)
 
+}
+
+object SurveyAreaCharacteristicsWriter {
+  
+  def apply() = new SurveyAreaCharacteristicsWriter()
+  
+  def write(surveyAreasCharacteristics: Seq[SurveyAreaCharacteristics]): SurveyAreaCharacteristicsWriter =
+    new SurveyAreaCharacteristicsWriter(surveyAreasCharacteristics)
+  
 }
