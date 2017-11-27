@@ -1,6 +1,6 @@
 package org.ifc.figssamel.drc.surveyarea
 
-import org.ifc.figssamel.drc.location.{CatchmentArea, GPSCoordinates}
+import org.ifc.figssamel.drc.location.GPSCoordinates
 
 case class SurveyArea(name: String, center: GPSCoordinates)
 

@@ -1,6 +1,6 @@
 package org.ifc.figssamel.drc.surveyarea
 
-import org.ifc.figssamel.drc.location.{CatchmentArea, GPSCoordinates, Lat, Lng}
+import org.ifc.figssamel.drc.location.{GPSCoordinates, Lat, Lng}
 import org.scalatest.{FlatSpecLike, Matchers}
 
 class SurveyAreaCharacteristicsWriterUTest extends FlatSpecLike with Matchers {

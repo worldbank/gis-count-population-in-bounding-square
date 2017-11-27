@@ -1,8 +1,8 @@
 package org.ifc.figssamel.drc.cartography
 
 import org.ifc.figssamel.drc.agent.Agent
-import org.ifc.figssamel.drc.location.{BoundingBox, CatchmentArea}
-import org.ifc.figssamel.drc.surveyarea.{SurveyArea, SurveyAreaCharacteristics}
+import org.ifc.figssamel.drc.location.BoundingBox
+import org.ifc.figssamel.drc.surveyarea.{CatchmentArea, SurveyArea, SurveyAreaCharacteristics}
 
 object Cartographer {
   

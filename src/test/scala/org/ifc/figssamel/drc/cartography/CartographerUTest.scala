@@ -1,8 +1,8 @@
 package org.ifc.figssamel.drc.cartography
 
 import org.ifc.figssamel.drc.agent.Agent
-import org.ifc.figssamel.drc.location.{CatchmentArea, GPSCoordinates, Lat, Lng}
-import org.ifc.figssamel.drc.surveyarea.{SurveyArea, SurveyAreaCharacteristics}
+import org.ifc.figssamel.drc.location.{GPSCoordinates, Lat, Lng}
+import org.ifc.figssamel.drc.surveyarea.{CatchmentArea, SurveyArea, SurveyAreaCharacteristics}
 import org.scalatest.{FlatSpecLike, Matchers}
 
 class CartographerUTest extends FlatSpecLike with Matchers {
