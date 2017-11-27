@@ -11,6 +11,7 @@ case class BoundingBox(
     (gPSCoordinates1, gPSCoordinates2, gPSCoordinates3, gPSCoordinates4)
       .compare(that.gPSCoordinates1, that.gPSCoordinates2, that.gPSCoordinates3, that.gPSCoordinates4)
   
+  // Taken from: https://stackoverflow.com/questions/18295825/determine-if-point-is-within-bounding-box
   def contains(candidate: GPSCoordinates): Boolean = {
     val gPSCoordinates = Seq(gPSCoordinates1, gPSCoordinates2, gPSCoordinates3, gPSCoordinates4).sorted
     
