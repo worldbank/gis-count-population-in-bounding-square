@@ -10,6 +10,6 @@ lazy val root = (project in file(".")).
     name := "study_area_characteristics",
     libraryDependencies ++= Seq(
        "com.github.tototoshi" %% "scala-csv" % "1.3.5",
-        scalaTest % Test
+       scalaTest % Test
     )
   )
