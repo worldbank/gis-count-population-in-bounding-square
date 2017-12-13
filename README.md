@@ -1,6 +1,6 @@
 # Study Area Characteristics
 
-This project calculates the number of agents within a square, axis-aligned bounding square centered on a given location and of a given length.
+This application calculates the number of agents within a square, axis-aligned bounding square centered on a given location and of a given length.
 
 # Requirements
 
@@ -28,3 +28,7 @@ Mont ngafula_Triangle Cité verte_4,N,0,N,0
 Kasa-vubu_Gambela_5,N,0,N,0
 Lemba_Boulevard Salongo_6,Y,6,Y,6
 ```
+
+The following image illustrates the objective. The purple squares are 500m by 500m bounding boxes centered at survey area points. The green markers mark agent locations. This application gives counts of the number of agents within each bounding square of a given size.
+
+![Map of DRC with survey and agent locations](https://user-images.githubusercontent.com/2116061/33957947-156cc588-e011-11e7-9505-c2a0b8443fef.png)
