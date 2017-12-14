@@ -31,12 +31,6 @@ case class BoundingBox(
 
 object DegreeRadianConverter {
   
-  implicit class DegreeRadianConverter(value: Double) {
-    def toDegrees: Double = value * Math.PI / 180d
-    
-    def toRadians: Double = value * 180d / Math.PI
-  }
-  
   object Constants {
     val MIN_LAT: Double = (-90).toRadians
     val MAX_LAT: Double = 90.toRadians
