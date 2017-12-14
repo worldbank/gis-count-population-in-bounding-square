@@ -1,6 +1,6 @@
 # Study Area Characteristics
 
-This application calculates the number of agents within a square, axis-aligned bounding square centered on a given location and of a given length.
+This application calculates the number of agents within an axis-aligned bounding square centered on a given location and of a given length.
 
 # Requirements
 
